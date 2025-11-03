@@ -1,0 +1,12 @@
+streamlit==1.28.0
+scikit-learn==1.7.2
+pandas
+numpy
+scipy
+joblib
+beautifulsoup4
+requests
+textstat
+nltk
+matplotlib
+seaborn
