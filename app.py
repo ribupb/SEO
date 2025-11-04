@@ -9,11 +9,17 @@ from nltk.tokenize import sent_tokenize
 
 import nltk
 
-# Ensure punkt is available in Streamlit Cloud
+# Ensure punkt and punkt_tab are available on Streamlit Cloud
 try:
     nltk.data.find("tokenizers/punkt")
 except LookupError:
     nltk.download("punkt")
+
+try:
+    nltk.data.find("tokenizers/punkt_tab")
+except LookupError:
+    nltk.download("punkt_tab")
+
 
 
 # ---- PATHS ----
@@ -143,4 +149,5 @@ if text and len(text.strip()) > 30:
                 st.write(f"- {df_features.loc[i,'url']} — {sims[i]:.3f} — word_count={int(df_features.loc[i,'word_count'])}")
 else:
     st.info("Provide URL, paste text or select sample from dataset.")
+
 
