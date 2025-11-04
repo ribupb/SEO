@@ -7,6 +7,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 import textstat
 from nltk.tokenize import sent_tokenize
 
+import nltk
+
+# Ensure punkt is available in Streamlit Cloud
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt")
+
+
 # ---- PATHS ----
 MODEL_PATH = "models/quality_model.pkl"
 ENCODER_PATH = "models/label_encoder.pkl"
@@ -134,3 +143,4 @@ if text and len(text.strip()) > 30:
                 st.write(f"- {df_features.loc[i,'url']} — {sims[i]:.3f} — word_count={int(df_features.loc[i,'word_count'])}")
 else:
     st.info("Provide URL, paste text or select sample from dataset.")
+
